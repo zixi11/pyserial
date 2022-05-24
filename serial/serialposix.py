@@ -579,6 +579,8 @@ class Serial(SerialBase, PlatformSpecific):
                 # there is nothing to read.
                 if not ready:
                     break   # timeout
+                else:
+                    timeout = Timeout(1)
                 buf = os.read(self.fd, size - len(read))
             except OSError as e:
                 # this is for Python 3.x where select.error is a subclass of
